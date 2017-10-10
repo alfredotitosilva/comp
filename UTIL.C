@@ -22,10 +22,10 @@ void printToken( TokenType token, const char* tokenString )
     case UNTIL:
     case READ:
     case WRITE:
-    case SWITCH:
+    case SWITCH:        /*added reserved words for SWITCH command */
     case CASE:
     case BREAK:
-    case ENDSWITCH:
+    case ENDSWITCH:     
       fprintf(listing,
          "reserved word: %s\n",tokenString);
       break;
@@ -40,7 +40,7 @@ void printToken( TokenType token, const char* tokenString )
     case TIMES: fprintf(listing,"*\n"); break;
     case OVER: fprintf(listing,"/\n"); break;
     case ENDFILE: fprintf(listing,"EOF\n"); break;
-    case TDOTS: fprintf(listing, ":\n"); break;
+    case TDOTS: fprintf(listing, ":\n"); break;   /* ':' symbol */
     case NUM:
       fprintf(listing,
           "NUM, val= %s\n",tokenString);

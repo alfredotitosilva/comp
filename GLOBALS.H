@@ -28,11 +28,11 @@
 typedef enum 
     /* book-keeping tokens */
    {ENDFILE,ERROR,
-    /* reserved words */
-    IF,THEN,ELSE,END,REPEAT,UNTIL,READ,WRITE,SWITCH,CASE,BREAK,ENDSWITCH
+    /* reserved words and new reserved words for SWITCH command*/
+    IF,THEN,ELSE,END,REPEAT,UNTIL,READ,WRITE,SWITCH,CASE,BREAK,ENDSWITCH 
     /* multicharacter tokens */
     ID,NUM,
-    /* special symbols */
+    /* special symbols + tdots ':' */
     ASSIGN,EQ,LT,PLUS,MINUS,TIMES,OVER,LPAREN,RPAREN,SEMI,TDOTS
    } TokenType;
 
