@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1507681937 source:c:\users\alfredo tito\documents\compiladores\compiler\main.c
+	"globals.h"
+	"util.h"
+	"scan.h"
+	"parse.h"
+	"analyze.h"
+	"cgen.h"
+
+1502666370 c:\users\alfredo tito\documents\compiladores\compiler\globals.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1502666370 c:\users\alfredo tito\documents\compiladores\compiler\util.h
+
+1502666370 c:\users\alfredo tito\documents\compiladores\compiler\scan.h
+
+1502666370 source:c:\users\alfredo tito\documents\compiladores\compiler\scan.c
+	"globals.h"
+	"util.h"
+	"scan.h"
+
