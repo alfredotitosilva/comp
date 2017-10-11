@@ -52,13 +52,15 @@ static void ungetNextChar(void)
 { if (!EOF_flag) linepos-- ;}
 
 /* lookup table of reserved words */
+//adição de palavras reservadas
 static struct
     { char* str;
       TokenType tok;
     } reservedWords[MAXRESERVED]
    = {{"if",IF},{"then",THEN},{"else",ELSE},{"end",END},
       {"repeat",REPEAT},{"until",UNTIL},{"read",READ},
-      {"write",WRITE}};
+      {"write",WRITE},{"switch",SWITCH},{"endswitch",ENDSWITCH},
+      {"break",BREAK}};
 
 /* lookup an identifier to see if it is a reserved word */
 /* uses linear search */
@@ -73,7 +75,7 @@ static TokenType reservedLookup (char * s)
 /****************************************/
 /* the primary function of the scanner  */
 /****************************************/
-/* function getToken returns the 
+/* function getToken returns the
  * next token in source file
  */
 TokenType getToken(void)

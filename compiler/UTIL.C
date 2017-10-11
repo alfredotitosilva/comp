@@ -22,6 +22,10 @@ void printToken( TokenType token, const char* tokenString )
     case UNTIL:
     case READ:
     case WRITE:
+    //adicionando tokens
+    case SWITCH:
+    case ENDSWITCH:
+    case BREAK:
       fprintf(listing,
          "reserved word: %s\n",tokenString);
       break;
@@ -35,6 +39,9 @@ void printToken( TokenType token, const char* tokenString )
     case MINUS: fprintf(listing,"-\n"); break;
     case TIMES: fprintf(listing,"*\n"); break;
     case OVER: fprintf(listing,"/\n"); break;
+    //adicionando pontos
+    case TDOTS: fprintf(listing,":\n"); break;
+    //
     case ENDFILE: fprintf(listing,"EOF\n"); break;
     case NUM:
       fprintf(listing,
