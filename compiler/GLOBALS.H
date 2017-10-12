@@ -30,7 +30,7 @@ typedef enum
    {ENDFILE,ERROR,
     /* reserved words */
     //adicionar palavras novas
-    IF,THEN,ELSE,END,REPEAT,UNTIL,READ,WRITE,SWITCH,ENDSWITCH,BREAK,
+    IF,THEN,ELSE,END,REPEAT,UNTIL,READ,WRITE,SWITCH,ENDSWITCH,BREAK,CASE,
     /* multicharacter tokens */
     ID,NUM,
     /* special symbols */

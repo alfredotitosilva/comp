@@ -60,7 +60,7 @@ static struct
    = {{"if",IF},{"then",THEN},{"else",ELSE},{"end",END},
       {"repeat",REPEAT},{"until",UNTIL},{"read",READ},
       {"write",WRITE},{"switch",SWITCH},{"endswitch",ENDSWITCH},
-      {"break",BREAK}};
+      {"break",BREAK},{"case",CASE}};
 
 /* lookup an identifier to see if it is a reserved word */
 /* uses linear search */
@@ -164,7 +164,13 @@ TokenType getToken(void)
          }
          break;
        case INNUM:
-         if (!isdigit(c))
+         if(c == ':')
+         {
+           currentToken = TDOTS;
+           save = FALSE;
+           state = DONE;
+         }
+         else if (!isdigit(c))
          { /* backup in the input */
            ungetNextChar();
            save = FALSE;
