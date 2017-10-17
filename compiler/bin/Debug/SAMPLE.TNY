@@ -2,7 +2,7 @@
   in TINY language -
   computes factorial
 }
-x := 4;
+xy2z44 := 4;
 switch x then
 	case 1:
 		y := x+1;

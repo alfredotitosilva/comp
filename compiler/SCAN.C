@@ -186,6 +186,13 @@ TokenType getToken(void)
            state = DONE;
            currentToken = ID;
          }
+         //adicionando para reconhecer letra e digito
+         else if(isdigit(c)){
+            ungetNextChar();
+            save = FALSE;
+            state = DONE;
+            currentToken = ID;
+         }
          break;
        case DONE:
        default: /* should never happen */
