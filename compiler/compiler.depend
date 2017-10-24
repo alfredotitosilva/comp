@@ -26,7 +26,7 @@
 	"globals.h"
 	"util.h"
 
-1507812711 source:c:\users\alfredo tito\documents\github\comp\compiler\main.c
+1508811019 source:c:\users\alfredo tito\documents\github\comp\compiler\main.c
 	"globals.h"
 	"util.h"
 	"scan.h"
@@ -44,7 +44,7 @@
 
 1507812711 c:\users\alfredo tito\documents\github\comp\compiler\scan.h
 
-1507809111 source:c:\users\alfredo tito\documents\github\comp\compiler\scan.c
+1508265003 source:c:\users\alfredo tito\documents\github\comp\compiler\scan.c
 	"globals.h"
 	"util.h"
 	"scan.h"
@@ -52,4 +52,12 @@
 1507816173 source:c:\users\alfredo tito\documents\github\comp\compiler\util.c
 	"globals.h"
 	"util.h"
+
+1507812711 c:\users\alfredo tito\documents\github\comp\compiler\parse.h
+
+1507812711 source:c:\users\alfredo tito\documents\github\comp\compiler\parse.c
+	"globals.h"
+	"util.h"
+	"scan.h"
+	"parse.h"
 

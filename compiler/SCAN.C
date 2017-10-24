@@ -160,17 +160,12 @@ TokenType getToken(void)
          { /* backup in the input */
            ungetNextChar();
            save = FALSE;
-           currentToken = ERROR;
+           currentToken = TDOTS;
          }
+
          break;
        case INNUM:
-         if(c == ':')
-         {
-           currentToken = TDOTS;
-           save = FALSE;
-           state = DONE;
-         }
-         else if (!isdigit(c))
+         if (!isdigit(c))
          { /* backup in the input */
            ungetNextChar();
            save = FALSE;
@@ -179,19 +174,13 @@ TokenType getToken(void)
          }
          break;
        case INID:
-         if (!isalpha(c))
+         //se não for alfanumerico e não for digito
+         if (!isalpha(c) && !isdigit(c))
          { /* backup in the input */
            ungetNextChar();
            save = FALSE;
            state = DONE;
            currentToken = ID;
-         }
-         //adicionando para reconhecer letra e digito
-         else if(isdigit(c)){
-            ungetNextChar();
-            save = FALSE;
-            state = DONE;
-            currentToken = ID;
          }
          break;
        case DONE:
