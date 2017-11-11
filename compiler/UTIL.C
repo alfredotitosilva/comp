@@ -155,6 +155,12 @@ void printTree( TreeNode * tree )
         case WriteK:
           fprintf(listing,"Write\n");
           break;
+        case SwitchK:
+          fprintf(listing,"Switch\n");
+          break;
+        case CaseK:
+          fprintf(listing,"case\n");
+          break;
         default:
           fprintf(listing,"Unknown ExpNode kind\n");
           break;

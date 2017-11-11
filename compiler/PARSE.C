@@ -9,7 +9,7 @@
 #include "util.h"
 #include "scan.h"
 #include "parse.h"
-
+#include <stdio.h>
 static TokenType token; /* holds current token */
 
 /* function prototypes for recursive calls */
@@ -20,6 +20,8 @@ static TreeNode * repeat_stmt(void);
 static TreeNode * assign_stmt(void);
 static TreeNode * read_stmt(void);
 static TreeNode * write_stmt(void);
+static TreeNode * switch_stmt(void);
+static TreeNode * case_stmt(void);
 static TreeNode * exp(void);
 static TreeNode * simple_exp(void);
 static TreeNode * term(void);
@@ -32,8 +34,8 @@ static void syntaxError(char * message)
 }
 
 static void match(TokenType expected)
-{ if (token == expected) token = getToken();
-  else {
+{ if (token == expected) token = getToken(); //captura um token
+  else { //retorna um erro
     syntaxError("unexpected token -> ");
     printToken(token,tokenString);
     fprintf(listing,"      ");
@@ -44,7 +46,9 @@ TreeNode * stmt_sequence(void)
 { TreeNode * t = statement();
   TreeNode * p = t;
   while ((token!=ENDFILE) && (token!=END) &&
-         (token!=ELSE) && (token!=UNTIL))
+         (token!=ELSE) && (token!=UNTIL) &&
+         (token !=SWITCH)  && (token != ENDSWITCH) &&
+         (token != BREAK)) // adicionei endswitch
   { TreeNode * q;
     match(SEMI);
     q = statement();
@@ -59,6 +63,8 @@ TreeNode * stmt_sequence(void)
   return t;
 }
 
+/*Decide qual declaração vai retornar*/
+/*cmd-decl*/
 TreeNode * statement(void)
 { TreeNode * t = NULL;
   switch (token) {
@@ -67,6 +73,12 @@ TreeNode * statement(void)
     case ID : t = assign_stmt(); break;
     case READ : t = read_stmt(); break;
     case WRITE : t = write_stmt(); break;
+    case SWITCH : t = switch_stmt(); break; //adicionada switch no decl
+    case ENDFILE: printf("END OF FILE \n"); break;
+    /*
+    a declaração switch inicia aqui onde é retornado um nó para a árvore
+    */
+    //se não encontrar nada retorna syntaxError
     default : syntaxError("unexpected token -> ");
               printToken(token,tokenString);
               token = getToken();
@@ -76,16 +88,44 @@ TreeNode * statement(void)
 }
 
 TreeNode * if_stmt(void)
-{ TreeNode * t = newStmtNode(IfK);
-  match(IF);
-  if (t!=NULL) t->child[0] = exp();
+{ TreeNode * t = newStmtNode(IfK); //cria um novo nó de declaração if
+  match(IF);// parte do if
+  if (t!=NULL) t->child[0] = exp(); //parte da comparação
   match(THEN);
-  if (t!=NULL) t->child[1] = stmt_sequence();
+  if (t!=NULL) t->child[1] = stmt_sequence(); // parte do corpo
   if (token==ELSE) {
     match(ELSE);
-    if (t!=NULL) t->child[2] = stmt_sequence();
+    if (t!=NULL) t->child[2] = stmt_sequence(); // parte do else
   }
   match(END);
+  return t;
+}
+
+//
+TreeNode * case_stmt(void)
+{
+  TreeNode * t = newStmtNode(CaseK);
+  match(CASE);
+  if(t != NULL)
+    t->child[0] = exp();//const
+  match(TDOTS);
+  if(t != NULL)
+    t->child[1] = stmt_sequence();//ação
+  match(BREAK);
+  if(token == CASE)
+    t->sibling = case_stmt();
+  return t;
+}
+
+//Aqui fica a declaração switch
+TreeNode * switch_stmt(void)
+{ TreeNode * t = newStmtNode(SwitchK);
+  match(SWITCH);
+  if(t != NULL)
+    t->child[0] = exp();// condição
+  if(t != NULL)
+    t->child[1] = case_stmt();
+  match(ENDSWITCH);
   return t;
 }
 
@@ -100,7 +140,7 @@ TreeNode * repeat_stmt(void)
 
 TreeNode * assign_stmt(void)
 { TreeNode * t = newStmtNode(AssignK);
-  if ((t!=NULL) && (token==ID))
+  if ((t!=NULL) && (token==ID) )
     t->attr.name = copyString(tokenString);
   match(ID);
   match(ASSIGN);
@@ -202,7 +242,7 @@ TreeNode * factor(void)
 /****************************************/
 /* the primary function of the parser   */
 /****************************************/
-/* Function parse returns the newly 
+/* Function parse returns the newly
  * constructed syntax tree
  */
 TreeNode * parse(void)

@@ -3,5 +3,13 @@
   computes factorial
 }
 
-switch case: endswitch: 1234var1	 
-
+y := 5;
+switch y
+	case 4:
+		y := 5
+		break
+	case 4:
+		read y
+		break							
+endswitch
+z := 4;
