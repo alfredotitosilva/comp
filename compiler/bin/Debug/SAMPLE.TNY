@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 { Sample program
   in TINY language -
   computes factorial
@@ -10,6 +11,17 @@ switch y
 		break
 	case 4:
 		read y
-		break							
-endswitch
+		break
+	case 4:
+		if 3 < 4 then
+			x := 3
+		end
+		break
+	case 4:
+		write y
+		break
+	case 4:
+		read y
+		break										
+endswitch;
 z := 4;

@@ -155,9 +155,17 @@ void printTree( TreeNode * tree )
         case WriteK:
           fprintf(listing,"Write\n");
           break;
+<<<<<<< HEAD
+        //add
         case SwitchK:
           fprintf(listing,"Switch\n");
           break;
+        //add
+=======
+        case SwitchK:
+          fprintf(listing,"Switch\n");
+          break;
+>>>>>>> origin/master
         case CaseK:
           fprintf(listing,"case\n");
           break;
