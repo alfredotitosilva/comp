@@ -1,5 +1,7 @@
 # depslib dependency file v1.0
-1510325010 source:c:\users\alfredo tito\documents\github\comp\compiler\main.c
+100 úŒid.è
+
+1512740222 source:c:\users\alfredo tito\documents\github\comp\compiler\main.c
 	"globals.h"
 	"util.h"
 	"scan.h"
@@ -7,28 +9,43 @@
 	"analyze.h"
 	"cgen.h"
 
+1510353581 gin/master
+	"globals.h"
+	"util.h"
+	"scan.h"
+	"parse.h"
+	"analyze.h"
+	"cgen.h"
+	"globals.h"
+	"util.h"
+	"scan.h"
+	"parse.h"
+	<stdio.h>
+
 1509480901 c:\users\alfredo tito\documents\github\comp\compiler\globals.h
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	<string.h>
 
-1507812711 c:\users\alfredo tito\documents\github\comp\compiler\util.h
+1508265003 D
 
-1507812711 c:\users\alfredo tito\documents\github\comp\compiler\scan.h
+1512740222 c:\users\alfredo tito\documents\github\comp\compiler\util.h
 
-1507812711 c:\users\alfredo tito\documents\github\comp\compiler\parse.h
+1512740222 c:\users\alfredo tito\documents\github\comp\compiler\scan.h
+
+1512740222 c:\users\alfredo tito\documents\github\comp\compiler\parse.h
 
 1508265003 source:c:\users\alfredo tito\documents\github\comp\compiler\scan.c
 	"globals.h"
 	"util.h"
 	"scan.h"
 
-1509480889 source:c:\users\alfredo tito\documents\github\comp\compiler\util.c
+1512740222 source:c:\users\alfredo tito\documents\github\comp\compiler\util.c
 	"globals.h"
 	"util.h"
 
-1510353581 source:c:\users\alfredo tito\documents\github\comp\compiler\parse.c
+1512740726 source:c:\users\alfredo tito\documents\github\comp\compiler\parse.c
 	"globals.h"
 	"util.h"
 	"scan.h"

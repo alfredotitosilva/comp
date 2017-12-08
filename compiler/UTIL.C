@@ -156,15 +156,21 @@ void printTree( TreeNode * tree )
           fprintf(listing,"Write\n");
           break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         //add
         case SwitchK:
           fprintf(listing,"Switch\n");
           break;
         //add
+<<<<<<< HEAD
+=======
 =======
         case SwitchK:
           fprintf(listing,"Switch\n");
           break;
+>>>>>>> origin/master
 >>>>>>> origin/master
         case CaseK:
           fprintf(listing,"case\n");

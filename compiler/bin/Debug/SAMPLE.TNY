@@ -3,6 +3,27 @@
   in TINY language -
   computes factorial
 }
+<<<<<<< HEAD
+x := 3;
+switch (x)
+	case 4
+		read y
+		break
+	case 5:
+		if 0 < x then { don't compute if x <= 0 }
+		  fact := 1;
+		  repeat
+		    fact := fact * x;
+		    x := x - 1
+		  until x = 0;
+		  write fact { output factorial of x }
+		end
+		break
+	case 6:
+		x := 4
+		break
+endswitch	
+=======
 
 y := 5;
 switch y
@@ -25,3 +46,4 @@ switch y
 		break										
 endswitch;
 z := 4;
+>>>>>>> origin/master
