@@ -3,16 +3,10 @@
   computes factorial
 }
 read x; { input an integer }
-if 0 < x then { don't compute if x <= 0 }
-  fact := 1;
-  repeat
-    fact := fact * x;
-    x := x - 1
-<<<<<<< HEAD
-  until x = 0;
-  write fact { output factorial of x }
-=======
-  until x = 0
-  write fact;  { output factorial of x }
->>>>>>> origin/master
+if x = 3 then { don't compute if x <= 0 }
+ 	write 2
+else 
+   if x = 4 then
+	write 3
+	end
 end

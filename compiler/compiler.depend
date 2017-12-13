@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
 100 úŒid.è
 
-1512740222 source:c:\users\alfredo tito\documents\github\comp\compiler\main.c
+1512944920 source:c:\users\alfredo tito\documents\github\comp\compiler\main.c
 	"globals.h"
 	"util.h"
 	"scan.h"
@@ -41,14 +41,43 @@
 	"util.h"
 	"scan.h"
 
-1512740222 source:c:\users\alfredo tito\documents\github\comp\compiler\util.c
+1513002593 source:c:\users\alfredo tito\documents\github\comp\compiler\util.c
 	"globals.h"
 	"util.h"
 
-1512740726 source:c:\users\alfredo tito\documents\github\comp\compiler\parse.c
+1513086564 source:c:\users\alfredo tito\documents\github\comp\compiler\parse.c
 	"globals.h"
 	"util.h"
 	"scan.h"
 	"parse.h"
 	<stdio.h>
+
+1502669970 c:\users\alfredo tito\documents\github\comp\compiler\analyze.h
+
+1502669970 c:\users\alfredo tito\documents\github\comp\compiler\cgen.h
+
+1502669970 source:c:\users\alfredo tito\documents\github\comp\compiler\analyze.c
+	"globals.h"
+	"symtab.h"
+	"analyze.h"
+
+1507812711 c:\users\alfredo tito\documents\github\comp\compiler\symtab.h
+
+1513097177 source:c:\users\alfredo tito\documents\github\comp\compiler\cgen.c
+	"globals.h"
+	"symtab.h"
+	"code.h"
+	"cgen.h"
+
+1507812711 c:\users\alfredo tito\documents\github\comp\compiler\code.h
+
+1507812711 source:c:\users\alfredo tito\documents\github\comp\compiler\code.c
+	"globals.h"
+	"code.h"
+
+1507812711 source:c:\users\alfredo tito\documents\github\comp\compiler\symtab.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"symtab.h"
 

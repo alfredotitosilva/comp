@@ -21,7 +21,7 @@ static TreeNode * assign_stmt(void);
 static TreeNode * read_stmt(void);
 static TreeNode * write_stmt(void);
 static TreeNode * switch_stmt(void);
-static TreeNode * case_stmt(void);
+static TreeNode * case_stmt(TreeNode * switchMarca);
 static TreeNode * exp(void);
 static TreeNode * simple_exp(void);
 static TreeNode * term(void);
@@ -104,34 +104,53 @@ TreeNode * if_stmt(void)
 }
 
 //
-TreeNode * case_stmt(void)
+/* adicionando switch-case */
+static TreeNode * switch_stmt(void)
 {
-  TreeNode * t = newStmtNode(CaseK);
-  match(CASE);
-
-  if(t != NULL)
-    t->child[0] = factor();
-  match(TDOTS);
-  if(t != NULL)
-    t->child[1] = stmt_sequence();//ação
-  match(BREAK);
-  if(token == CASE)
-    t->sibling = case_stmt();
-  return t;
+    TreeNode * t = newStmtNode(SwitchK);
+    TreeNode * p;
+    match(SWITCH);
+    switch(token) {
+        case LPAREN :
+            match(LPAREN);
+            if (t!=NULL) t->child[0] = factor();
+            match(RPAREN);
+            if (token==CASE) {
+                if (t!=NULL) {
+                    t->child[1] = case_stmt(t->child[0]);
+                    p = t->child[1];
+                }
+                while (token==CASE) {
+                    TreeNode * q = case_stmt(t->child[0]);
+                    if (q!=NULL) {
+                        if (t==NULL) t = p = q;
+                        else {
+                            p->sibling = q;
+                            p = q;
+                        }
+                    }
+                }
+            }
+            match(ENDSWITCH);
+        break;
+    }
+    return t;
 }
 
-//Aqui fica a declaração switch
-TreeNode * switch_stmt(void)
-{ TreeNode * t = newStmtNode(SwitchK);
-  match(SWITCH);
-  match(LPAREN);
-  if(t != NULL)
-    t->child[0] = exp();// condição
-  match(RPAREN);
-  if(t != NULL)
-    t->child[1] = case_stmt();
-  match(ENDSWITCH);
-  return t;
+static TreeNode * case_stmt(TreeNode * switchMarca)
+{
+    TreeNode * t = newStmtNode(CaseK);
+    match(CASE);
+    if (t!=NULL) {
+        t->child[0] = newExpNode(OpK);
+        TreeNode * p = t->child[0];
+        p->child[0] = factor();
+        p->attr.op = EQ;
+        p->child[1] = switchMarca;
+    }
+    match(TDOTS);
+    if (t!=NULL) t->child[1] = stmt_sequence();
+    return t;
 }
 
 TreeNode * repeat_stmt(void)
